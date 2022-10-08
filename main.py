@@ -84,7 +84,7 @@ if __name__ == '__main__':
     shutil.make_archive(compressed_path, 'zip', temp_path)
     shutil.rmtree(temp_path)
 
-    dbx = dropbox.Dropbox(os.getenv("ACCESS_TOKEN"))
+    dbx = dropbox.Dropbox(app_key=os.getenv('APP_KEY'), app_secret=os.getenv('APP_SECRET'), oauth2_refresh_token=os.getenv('REFRESH_TOKEN'))
     try:
         dbx.users_get_current_account()
     except AuthError:
